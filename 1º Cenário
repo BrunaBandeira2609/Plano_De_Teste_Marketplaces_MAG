@@ -1,0 +1,126 @@
+# 🧪 Plano de Testes da Integração com Marketplaces (Amazon e Mercado Livre)
+
+Este é um plano de testes simples feito para ajudar na validação da integração do nosso e-commerce com os marketplaces Amazon e Mercado Livre. Essa integração inclui as partes de estoque, anúncios, pedidos, faturamento e preços. Abaixo estão as etapas que pretendo seguir para realizar os testes.
+
+## 📁 1. Documentação e Materiais de Apoio
+
+### 1.1 Documentos que Vou Usar
+
+* Documentação das APIs da Amazon e do Mercado Livre;
+* Especificações técnicas feitas pela equipe de desenvolvimento;
+* Documento com os requisitos do sistema;
+* Tarefas e histórias do projeto que estão no JIRA;
+* Documentação das APIs com Swagger;
+* Diagramas mostrando como a integração funciona.
+
+### 1.2 Como Vou Analisar a Documentação
+
+* Ler os documentos para entender como tudo funciona;
+* Ver quais dados entram e saem do sistema;
+* Conferir se as regras estão de acordo com o que o marketplace exige;
+* Anotar os campos obrigatórios e como eles devem ser preenchidos.
+
+### 1.3 Como Vou Mapear os Requisitos
+
+* Criar uma tabela com o que precisa ser testado e o que foi pedido no projeto;
+* Separar os testes por funcionalidades e tipos de cenários (sucesso, erro);
+* Organizar os testes por ordem de prioridade.
+
+### 1.4 Ferramentas Que Vou Utilizar
+
+* JIRA para acompanhar tarefas e bugs;
+* Confluence para acessar documentações;
+* TestRail (ou planilhas, se necessário) para controlar os testes;
+* Postman para testar as APIs;
+* Google Sheets para montar listas de dados e cenários.
+
+---
+
+## 📌 2. O Que Vou Testar
+
+### 2.1 Funcionalidades Principais
+
+1. Atualização de Estoque;
+2. Criação e edição de Anúncios;
+3. Recebimento de Pedidos;
+4. Envio de Notas Fiscais;
+5. Atualização de Preços.
+
+### 2.2 Exemplos de Casos de Teste
+
+#### Estoque
+
+* Atualização de estoque funcionando corretamente;
+* Tentar atualizar com estoque negativo ou vazio;
+* Produto não encontrado no marketplace;
+* Testes com vários produtos ao mesmo tempo.
+
+#### Anúncios
+
+* Criar anúncio com todas as informações;
+* Tentar criar com dados faltando;
+* Alterar preço e imagens do anúncio;
+* Ver se o marketplace rejeita algum anúncio incorreto.
+
+#### Pedidos
+
+* Ver se os pedidos chegam no e-commerce corretamente;
+* Verificar se os itens do pedido estão certos;
+* Testar quando chegam vários pedidos juntos;
+* Ver como funciona quando o pedido é cancelado.
+
+#### Faturamento
+
+* Enviar nota fiscal com dados corretos;
+* Ver o que acontece quando tem erro na nota;
+* Testar diferença de dados entre pedido e nota.
+
+#### Preço
+
+* Atualizar o preço dos produtos;
+* Testar preços inválidos (ex.: zero);
+* Ver como funciona com preços promocionais.
+
+### 2.3 Como Vou Priorizar os Testes
+
+* Começar pelos mais importantes para o funcionamento (pedidos e estoque);
+* Ver o que é mais usado e que pode causar problemas graves;
+* Priorizar o que tem impacto direto no cliente final.
+
+---
+
+## 🚀 Como Será a Execução dos Testes
+
+### 3.1 Ambiente de Testes
+
+* Usar o ambiente de homologação que imita o ambiente real;
+* Esse ambiente tem dados separados e seguros.
+
+### 3.2 Dados de Teste
+
+* Criar produtos fictícios com diferentes características;
+* Gerar pedidos com vários tipos de situações;
+* Criar usuários com diferentes acessos para testar permissões.
+
+### 3.3 Ferramentas de Automação
+
+* Postman para automatizar testes de API;
+* Cypress (se necessário) para testar a interface do sistema;
+* JMeter (caso precise de testes de carga futuramente).
+
+### 3.4 Registro dos Resultados
+
+* Anotar os resultados dos testes no TestRail ou planilhas;
+* Registrar erros e problemas encontrados no JIRA;
+* Criar um painel com os principais indicadores de testes.
+
+---
+
+## ✅ Considerações Finais
+
+* Sempre revisar os testes a cada nova atualização do sistema;
+* Explorar o sistema além dos testes planejados para encontrar falhas inesperadas;
+* Verificar tudo com a equipe antes de liberar para produção;
+* Manter contato com os times de desenvolvimento e produto para alinhar dúvidas.
+
+Este plano foi feito com base nos conhecimentos que estou adquirindo e pode ser melhorado conforme surgirem novas informações ou aprendizados.
