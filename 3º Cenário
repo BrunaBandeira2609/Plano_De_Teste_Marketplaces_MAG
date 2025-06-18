@@ -1,0 +1,50 @@
+🕵️ Análise de Problema com Anúncios no Mercado Livre
+
+📌 Problema Relatado
+
+Cliente informa que os anúncios não estão sendo marcados como "Pausado (sem estoque)" quando o estoque chega a 0. Eles ficam apenas como "Pausado" e ainda aparecem disponíveis para venda, o que gera pedidos mesmo sem estoque.
+
+🔍 Passos para Análise do Problema
+
+Verificar no log da Magazord se o sistema envia a atualização de estoque com valor igual a 0;
+
+Checar se o ERP envia realmente o campo available_quantity = 0 para o Mercado Livre;
+
+Conferir se o anúncio muda corretamente de status quando essa atualização é feita manualmente;
+
+Ver se a API de consulta ao item (GET /items/{item_id}) retorna listing_status: paused com causa out_of_stock.
+
+❓ Hipóteses Possíveis
+
+O ERP Magazord não está enviando a informação de estoque igual a zero quando o item zera;
+
+A lógica de sincronização só atualiza quando o estoque aumenta, mas não quando zera;
+
+Pode haver erro de mapeamento entre o produto do ERP e o anúncio do ML;
+
+Algum problema de cache ou erro de resposta da API, fazendo parecer que o estoque está atualizado, mas não está;
+
+O status "Pausado" foi alterado automaticamente pelo ML ou por algum usuário sem que o cliente percebesse.
+
+✅ O Que Pode Ser Feito
+
+Solicitar ao time técnico uma verificação nos logs para ver se a atualização com stock = 0 está realmente sendo enviada;
+
+Fazer um teste manual: criar um produto teste e zerar o estoque para ver se o status muda corretamente;
+
+Consultar a documentação oficial da API do Mercado Livre para confirmar que a ausência do envio available_quantity = 0 impede o status "Pausado por falta de estoque";
+
+Marcar um checklist com os testes feitos e deixar registrado em planilha.
+
+✅ Considerações Finais
+
+Esse erro pode ser causado por uma pequena falha na lógica de atualização de estoque na Magazord;
+
+A correção pode ser feita pedindo para o time garantir que sempre que o estoque chegar a 0, o valor seja enviado para o ML;
+
+Continuar acompanhando os anúncios para verificar se o problema volta a ocorrer;
+
+Atualizar este documento com novos testes ou casos semelhantes no futuro.
+
+Esse plano foi feito com base no que aprendi até agora e nas informações que tive acesso, e vou usar para acompanhar e testar a integração com mais segurança.
+
