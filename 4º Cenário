@@ -1,0 +1,76 @@
+# ✅ Casos de Teste – Validação de Dados Cadastrais
+
+Este documento foi feito para ajudar na validação dos campos de cadastro de clientes no sistema. O objetivo é garantir que os campos funcionem corretamente quando o usuário tenta salvar informações como nome, e-mail, telefone, data de nascimento e endereço.
+
+Os testes foram pensados de forma simples, considerando entradas corretas e também possíveis erros que o usuário pode cometer.
+
+---
+
+## 🧑‍💻 Campos Testados:
+
+* Nome completo
+* E-mail
+* Telefone
+* Data de nascimento
+* Endereço (Rua, Cidade, Estado, CEP)
+
+---
+
+## 🔹 Casos de Teste por Campo
+
+### 1. Nome Completo
+
+| ID    | Caso de Teste        | Entrada       | Esperado                                |
+| ----- | -------------------- | ------------- | --------------------------------------- |
+| CT001 | Nome completo válido | João da Silva | Deve salvar normalmente                 |
+| CT002 | Apenas um nome       | João          | Exibir aviso: "Informe o nome completo" |
+| CT003 | Nome com números     | João123       | Bloquear salvamento                     |
+| CT004 | Campo em branco      | (vazio)       | Exibir aviso de campo obrigatório       |
+
+### 2. E-mail
+
+| ID    | Caso de Teste   | Entrada                                 | Esperado                         |
+| ----- | --------------- | --------------------------------------- | -------------------------------- |
+| CT005 | E-mail válido   | [joao@email.com](mailto:joao@email.com) | Salvar normalmente               |
+| CT006 | Sem @           | joaoemail.com                           | Mostrar erro de formato inválido |
+| CT007 | Com espaço      | joao @email.com                         | Bloquear envio                   |
+| CT008 | Campo em branco | (vazio)                                 | Avisar que é obrigatório         |
+
+### 3. Telefone
+
+| ID    | Caso de Teste    | Entrada         | Esperado                          |
+| ----- | ---------------- | --------------- | --------------------------------- |
+| CT009 | Telefone correto | (47) 91234-5678 | Salvar normalmente                |
+| CT010 | Número curto     | 12345           | Mostrar erro de telefone inválido |
+| CT011 | Com letras       | abc912345678    | Bloquear entrada                  |
+| CT012 | Campo em branco  | (vazio)         | Avisar se for obrigatório         |
+
+### 4. Data de Nascimento
+
+| ID    | Caso de Teste  | Entrada    | Esperado                             |
+| ----- | -------------- | ---------- | ------------------------------------ |
+| CT013 | Data válida    | 01/01/1990 | Salvar normalmente                   |
+| CT014 | Data futura    | 01/01/2100 | Bloquear com mensagem de erro        |
+| CT015 | Formato errado | 1990/01/01 | Validar formato correto (dd/mm/aaaa) |
+| CT016 | Campo vazio    | (vazio)    | Exibir alerta se for obrigatório     |
+
+### 5. Endereço (Rua, Cidade, Estado, CEP)
+
+| ID    | Campo         | Entrada        | Esperado                           |
+| ----- | ------------- | -------------- | ---------------------------------- |
+| CT017 | Rua           | Rua Joinville  | Salvar normalmente                 |
+| CT018 | Cidade        | Santa Catarina | OK                                 |
+| CT019 | Estado        | SC             | OK                                 |
+| CT020 | CEP válido    | 01001-000      | Salvar normalmente                 |
+| CT021 | CEP inválido  | 00000000       | Mostrar erro de CEP inválido       |
+| CT022 | Campos vazios | (todos)        | Validar se são obrigatórios ou não |
+
+---
+
+## 📌 Observações Finais
+
+* Alguns testes podem depender das regras do sistema (por exemplo, se o telefone é obrigatório ou não);
+* Pode ser necessário revisar mensagens de erro para ver se estão claras;
+* Após alterar os dados, testar se eles permanecem salvos corretamente ao abrir o cadastro de novo.
+
+Este documento foi feito com base no que aprendi até agora e pode ser melhorado com a ajuda da equipe técnica ou mais testes no sistema.
